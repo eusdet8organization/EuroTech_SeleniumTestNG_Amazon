@@ -41,9 +41,9 @@ public class TestBase {
 
         report.attachReporter(htmlReporter);
 
-        htmlReporter.config().setReportName("Smoke Test");
+        htmlReporter.config().setReportName("E2E Test");
 
-        report.setSystemInfo("Environment","QA");
+        report.setSystemInfo("Environment","Test Amazon");
         report.setSystemInfo("Browser", ConfigurationReader.get("browser"));
         report.setSystemInfo("OS",System.getProperty("os.name"));
         report.setSystemInfo("Test Engineer","UmutIhsan");
