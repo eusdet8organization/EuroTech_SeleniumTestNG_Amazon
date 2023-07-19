@@ -53,5 +53,8 @@ public class Amazon_CreateList extends TestBase {
         extentLogger.info("Create a new list named as Umut");
         yourListPage.createANewListMethod("Umut");
 
+        extentLogger.info("Delete shopping list");
+        yourListPage.deleteList();
+
     }
 }
