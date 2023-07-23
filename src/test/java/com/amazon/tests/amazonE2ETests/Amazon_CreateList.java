@@ -1,5 +1,6 @@
 package com.amazon.tests.amazonE2ETests;
 
+import com.amazon.pages.BookPage;
 import com.amazon.pages.LoginPage;
 import com.amazon.pages.YourListPage;
 import com.amazon.tests.TestBase;
@@ -16,20 +17,23 @@ public class Amazon_CreateList extends TestBase {
      *  Click a new list from Hesap ve Listeler
      *  Create a new list named as Umut
      *  Verify that Umut list is created
+     *  Delete Umut list
      *  Select any category from the section tab next to the search box (click search button)
      *  Verify that category  is selected
      *  Write any product to search box and click
-     *  Verify that the result page is displayed
+     *  Verify that the product name is displayed on the result page
 
      Project Name:EuroTech_SeleniumTestNG_Amazon
      */
 
     LoginPage loginPage;
     YourListPage yourListPage;
+    BookPage bookPage;
     @Test
     public void TC001_ListTest(){
         loginPage=new LoginPage();
         yourListPage=new YourListPage();
+        bookPage=new BookPage();
 
         extentLogger=report.createTest("TC001_List Test");
 
@@ -53,8 +57,25 @@ public class Amazon_CreateList extends TestBase {
         extentLogger.info("Create a new list named as Umut");
         yourListPage.createANewListMethod("Umut");
 
+        extentLogger.info("Verify that Umut list is created");
+        yourListPage.verificationOfCreatedList("Umut");
+
         extentLogger.info("Delete shopping list");
         yourListPage.deleteList();
 
+        extentLogger.info("Select any category from the section tab next to the search box (click search button)");
+        yourListPage.selectCategory("Kitaplar");
+        yourListPage.clickSearchButton();
+
+        extentLogger.info("Verify that category  is selected");
+        bookPage.verificationOfSelectedCategory("Kitaplar");
+
+        extentLogger.info("Write any product to search box and click");
+        bookPage.searchingProduct("Selenium");
+
+        extentLogger.info("Verify that the product name is displayed on the result page");
+        bookPage.verificationOfSearchingResult("Selenium");
+
+        extentLogger.pass("Passed...!");
     }
 }
