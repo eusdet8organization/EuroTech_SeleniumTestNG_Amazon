@@ -2,6 +2,7 @@ package com.amazon.pages;
 
 import com.amazon.utilities.BrowserUtils;
 import com.amazon.utilities.Driver;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -32,7 +33,7 @@ public  abstract class BasePage {
     @FindBy (id = "searchDropdownBox")
     public WebElement selectCategoryDropDown;
 
-    @FindBy(css = "[value='Git']")
+    @FindBy(id = "nav-search-submit-button")
     public WebElement searchButton;
 
     @FindBy(id = "twotabsearchtextbox")
@@ -73,7 +74,7 @@ public  abstract class BasePage {
     }
 
     public void searchingProduct(String productName){
-        searchBox.sendKeys(productName);
-        searchButton.click();
+        searchBox.sendKeys(productName+ Keys.ENTER);
+       // searchButton.click();
     }
 }

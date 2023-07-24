@@ -77,5 +77,6 @@ public class Amazon_CreateList extends TestBase {
         bookPage.verificationOfSearchingResult("Selenium");
 
         extentLogger.pass("Passed...!");
+
     }
 }
